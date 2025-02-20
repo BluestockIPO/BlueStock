@@ -1,0 +1,34 @@
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import ForgotPassword from "./components/ForgotPassword";
+import UpcomingIpo from "./components/ipos/UpcomingIpo";
+import "./styles/App.css";
+
+function Layout() {
+  const location = useLocation();
+
+  // Hide Navbar on Login & Signup pages
+  const hideNavbar = location.pathname === "/login" || location.pathname === "/signup";
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<UpcomingIpo />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Routes>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
+  );
+}

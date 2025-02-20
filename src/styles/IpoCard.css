@@ -1,0 +1,43 @@
+.ipo-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  
+  .ipo-logo {
+    height: 40px;
+  }
+  
+  .ipo-title {
+    color: blue;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .ipo-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .rhp-button,
+  .drhp-button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .rhp-button {
+    background-color: lightblue;
+    color: darkblue;
+  }
+  
+  .drhp-button {
+    background-color: red;
+    color: white;
+  }
+  
