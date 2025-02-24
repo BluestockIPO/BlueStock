@@ -1,31 +1,59 @@
 import React from "react";
-import "../styles/Navbar.css";
-import { useNavigate } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { Search, Bell } from "lucide-react";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isDashboard = location.pathname === "/dashboard"; // Check if the current page is Dashboard
+  const hideButton = location.pathname === "/dashboard"; // Hide Sign In/Sign Up on Dashboard
+
   return (
-    <nav className="navbar">
+    <nav className="bg-white shadow-md py-4 px-6 flex items-center justify-between">
       {/* Left: Logo */}
-      <div className="navbar-logo">
-        <img src="src/assets/bluestock-logo.png" alt="Bluestock" />
+      <div className="flex items-center text-lg font-bold text-black">
+        <img src="src/assets/bluestock-logo.png" alt="Bluestock" className="h-8 mr-3" />
       </div>
 
       {/* Middle: Navigation Links */}
-      <ul className="navbar-links">
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Community</a></li>
-        <li><a href="#">Media</a></li>
-        <li><a href="#">Support</a></li>
+      <ul className="flex gap-6 text-gray-600 ml-10">
+        <li>
+          <a href="#" className="hover:text-blue-500">Products</a>
+        </li>
+        <li>
+          <a href="#" className="hover:text-blue-500">Pricing</a>
+        </li>
+        <li>
+          <a href="#" className="hover:text-blue-500">Community</a>
+        </li>
+        <li>
+          <a href="#" className="hover:text-blue-500">Media</a>
+        </li>
+        <li>
+          <a href="#" className="hover:text-blue-500">Support</a>
+        </li>
       </ul>
 
-      {/* Right: Sign In / Sign Up */}
-      <div className="navbar-buttons">
-        <button className="signin-button" onClick={() => navigate("/login")}>Sign In</button>
-        <button className="signup-button" onClick={() => navigate("/signup")}>Sign Up Now</button>
-      </div>
+     
+
+      {/* Sign In / Sign Up (Hidden on Dashboard) */}
+      {!hideButton && (
+        <div className="ml-auto flex gap-4">
+          <button 
+            className="text-gray-600 hover:text-blue-500 transition-colors"
+            onClick={() => navigate("/login")}
+          >
+            Sign In
+          </button>
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up Now
+          </button>
+        </div>
+      )}
     </nav>
   );
 };
