@@ -5,12 +5,19 @@ body{
 }
 
 .titleName{
+    margin-top: 20px;
     margin-left: 30px;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .titleName p{
     opacity: 0.5;
-    line-height: 2px;
+    line-height: 10px;
+    margin-top: 10px;
     font-weight: normal;
 }
 .ipo-cards {

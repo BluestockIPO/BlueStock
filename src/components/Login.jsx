@@ -7,25 +7,54 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import ReCAPTCHA from "react-google-recaptcha";
 import logo from "../assets/logo.webp";
 import { isAuthenticated } from "../services/Auth";
+import { storageUserData } from "../services/Storage";
+import { LoginApi } from "../services/Api"; // ✅ Ensure correct import
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputs = (event) => {
+    setInputs({ ...inputs, [event.target.name]: event.target.value }); // ✅ Fixed input issue
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (!inputs.email || !inputs.password) {
+      alert("Email and password are required.");
+      return;
+    }
+
     if (!isVerified) {
       alert("Please verify the reCAPTCHA");
       return;
     }
+
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert("Login Successful");
-      navigate("/dashboard");
+      // ✅ Firebase Authentication
+      await signInWithEmailAndPassword(auth, inputs.email, inputs.password);
+      alert("Firebase Login Successful");
+
+      // ✅ Call Backend API
+      const response = await LoginApi(inputs);
+      console.log("API Response:", response); // Debugging
+
+      if (response && response.idToken) {
+        storageUserData(response.idToken);
+        navigate("/dashboard"); // ✅ Fixed navigation
+      } else {
+        console.error("Invalid API response:", response);
+        alert("Login failed. Please try again.");
+      }
     } catch (error) {
+      console.error("Login Error:", error);
       alert(error.message);
     }
   };
@@ -39,11 +68,9 @@ export default function Login() {
       alert(error.message);
     }
   };
-
-  if(isAuthenticated()){
+  if(isAuthenticated){
     return <Navigate to="/dashboard" />
   }
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 px-4">
       <img src={logo} alt="Logo" className="w-60 mb-6" />
@@ -52,28 +79,23 @@ export default function Login() {
         <label className="block text-sm font-medium mb-1">Email Address</label>
         <input
           type="email"
+          name="email"
           placeholder="Enter your email"
           className="w-full p-2 border rounded mb-4"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleInputs}
+          value={inputs.email} // ✅ Ensure controlled input
           required
         />
-
-        <div className="flex justify-start">
-          <p
-            onClick={() => navigate("/forgot-password")}
-            className="text-sm text-blue-600 cursor-pointer hover:underline mb-1"
-          >
-            Forgot Password?
-          </p>
-        </div>
 
         <label className="block text-sm font-medium mb-1">Password</label>
         <div className="relative w-full">
           <input
             type={showPassword ? "text" : "password"}
+            name="password"
             placeholder="Enter your password"
             className="w-full p-2 border rounded mb-4 pr-10"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInputs}
+            value={inputs.password} // ✅ Ensure controlled input
             required
           />
           <span

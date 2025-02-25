@@ -11,4 +11,8 @@ export const storageUserData = (data) => {
   export const getUserData=()=>{
     return localStorage.getItem("idToken")
   }
+
+  export const removeUserData = ()=>{
+    localStorage.removeItem('idToken')
+}
   

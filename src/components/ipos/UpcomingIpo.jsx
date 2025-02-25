@@ -46,9 +46,9 @@ const UpcomingIpo = () => {
     };
 
     return (
-        <div className="upcoming-ipo">
+        <div className="upcoming-ipo ">
             <div className="titleName">
-                <h1>Upcoming IPO</h1>
+                <h1 className="title">Upcoming IPO</h1>
                 <p>
                     Companies that have filed for an IPO with SEBI. Few details might be disclosed by the companies later.
                 </p>

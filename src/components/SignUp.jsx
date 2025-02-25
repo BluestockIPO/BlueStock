@@ -74,14 +74,15 @@ export default function SignUp() {
       const result = await signInWithPopup(auth, googleProvider);
       alert("Google Sign-Up Successful");
       storageUserData(result.user.accessToken);
-      navigate("/dashboard");
+      navigate("/login");
     } catch (error) {
       alert(error.message);
     }
   };
 
   if(isAuthenticated()){
-    return <Navigate to="/dashboard" />
+    console.log("--------->")
+    return <Navigate to="/login" />
   }
 
   return (
