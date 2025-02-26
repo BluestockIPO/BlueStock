@@ -80,10 +80,7 @@ export default function SignUp() {
     }
   };
 
-  if(isAuthenticated()){
-    console.log("--------->")
-    return <Navigate to="/login" />
-  }
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 px-4">

@@ -68,9 +68,7 @@ export default function Login() {
       alert(error.message);
     }
   };
-  if(isAuthenticated){
-    return <Navigate to="/dashboard" />
-  }
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 px-4">
       <img src={logo} alt="Logo" className="w-60 mb-6" />

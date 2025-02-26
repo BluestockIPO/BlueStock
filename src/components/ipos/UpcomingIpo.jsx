@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/UpcomingIpo.css";
+import { Facebook, Twitter, Linkedin, Youtube, Instagram, Send } from "lucide-react";
+
 import IpoCard from "./IpoCard"; // Import IPO Card component
 
 const ipoData = [
@@ -110,6 +112,103 @@ const UpcomingIpo = () => {
                     </div>
                 </div>
             </div>
+
+            <footer className="bg-f9f9f9 text-gray-700 py-10">
+                <div className="container mx-auto px-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        {/* Resources Section */}
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Resources</h3>
+                            <ul className="space-y-2 text-sm">
+                                <li>Trading View</li>
+                                <li>NSE Holidays</li>
+                                <li>e-Voting CDSL</li>
+                                <li>e-Voting NSDL</li>
+                                <li>Market Timings</li>
+                            </ul>
+                        </div>
+
+                        {/* Company Section */}
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Company</h3>
+                            <ul className="space-y-2 text-sm">
+                                <li>Careers</li>
+                                <li>Contact Us</li>
+                                <li>About Us</li>
+                                <li>Community</li>
+                                <li>Blogs</li>
+                            </ul>
+                        </div>
+
+                        {/* Offerings Section */}
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Offerings</h3>
+                            <ul className="space-y-2 text-sm">
+                                <li>Compare Broker</li>
+                                <li>Fin Calculators</li>
+                                <li>IPO</li>
+                                <li>All Brokers</li>
+                                <li>Products</li>
+                            </ul>
+                        </div>
+
+                        {/* Links Section */}
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Links</h3>
+                            <ul className="space-y-2 text-sm">
+                                <li>Shark Investor</li>
+                                <li>Mutual Funds</li>
+                                <li>Sitemap</li>
+                                <li>Indian Indices</li>
+                                <li>Bug Bounty Program</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Social Media & Contact */}
+                    <div className="flex flex-col items-center mt-8 text-center">
+                        <div className="flex space-x-4">
+                            <Facebook className="w-5 h-5 cursor-pointer" />
+                            <Twitter className="w-5 h-5 cursor-pointer" />
+                            <Linkedin className="w-5 h-5 cursor-pointer" />
+                            <Youtube className="w-5 h-5 cursor-pointer" />
+                            <Instagram className="w-5 h-5 cursor-pointer" />
+                            <Send className="w-5 h-5 cursor-pointer" />
+                        </div>
+
+                        <div className="mt-4">
+                            <h3 className="font-semibold text-lg">BLUESTOCK</h3>
+                            <p className="text-sm">Bluestock Fintech, Pune, Maharashtra</p>
+                            <p className="text-xs">MSME Registration No: UDYAM-MH-01-0138001</p>
+                            <p className="text-sm font-semibold mt-2 text-orange-500">#startupindia</p>
+                        </div>
+                    </div>
+
+                    {/* Disclaimer Section */}
+                    <div className="mt-6 text-sm text-center">
+                        <p>
+                            Investment in securities markets is subject to market risks. Read all the related
+                            documents carefully before investing as prescribed by SEBI.
+                        </p>
+                        <p className="mt-2">
+                            For queries, contact:{" "}
+                            <a href="mailto:hello@bluestock.in" className="text-blue-500">
+                                hello@bluestock.in
+                            </a>
+                            {" "}or{" "}
+                            <a href="mailto:cto@bluestock.in" className="text-blue-500">
+                                cto@bluestock.in
+                            </a>
+                        </p>
+                    </div>
+
+                    {/* Bottom Footer */}
+                    <div className="mt-8 text-center text-xs">
+                        <p>Bluestock Fintech All Rights Reserved.</p>
+                        <p className="mt-2">Made with ❤️ in Pune, Maharashtra</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };
