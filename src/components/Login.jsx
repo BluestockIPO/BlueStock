@@ -104,7 +104,19 @@ export default function Login() {
           </span>
         </div>
 
-        <ReCAPTCHA sitekey="6LcuUt0qAAAAACowY0pGCDarj4eUhPj6q8IN7G9s" onChange={() => setIsVerified(true)} />
+        <div className="flex flex-col items-center gap-4 p-4">
+          {/* Google reCAPTCHA */}
+          <ReCAPTCHA
+            sitekey="6LcuUt0qAAAAACowY0pGCDarj4eUhPj6q8IN7G9s"
+            onChange={() => setIsVerified(true)}
+          />
+          
+          {!isVerified && (
+            <div className="text-red-500 font-medium animate-pulse">
+              Please Verify the Captcha
+            </div>
+          )}
+        </div>
 
         <button
           type="submit"

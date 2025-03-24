@@ -4,6 +4,7 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { BarChart, ShoppingCart, FileText, MessageCircle, Settings, Server, User, Info, Bell, Search } from "lucide-react";
 import DashBoardsideBar from "./DashBoardsideBar";
 import { ArrowUp } from "lucide-react";
+import HeaderActions from "./HeaderActions";
 
 
 
@@ -34,25 +35,7 @@ const DashBoard = () => {
       <DashBoardsideBar onLogout={handleLogout} />
 
       <main className="flex-1 bg-white">
-        <header className="flex items-center justify-between p-4 bg-white shadow-md">
-          <div className="flex items-center bg-gray-100 px-3 py-2 rounded-md">
-            <Search className="w-5 h-5 text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-transparent ml-2 focus:outline-none"
-            />
-          </div>
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-2 cursor-pointer">
-              <div className="w-8 h-8 bg-orange-300 rounded-full flex items-center justify-center text-gray-600 font-semibold">
-                {userName.charAt(0) || 'U'}
-              </div>
-              <span className="text-gray-700 font-medium">Hi, {userName || 'User'}</span>
-            </div>
-            <Bell className="w-6 h-6 text-gray-500 cursor-pointer hover:text-indigo-600" />
-          </div>
-        </header>
+        <HeaderActions />
         <h1 className="text-2xl p-5 text-blue-800 font-bold">DashBoard</h1>
         <div className="relative flex">
           <div className="p-6 grid">
@@ -109,7 +92,6 @@ const DashBoard = () => {
             <div className="flex items-center gap-2 text-green-600 font-medium">
               <span className="text-gray-500">From 01 Jan 2024</span>
             </div>
-  
           </div>
         </div>
       </main>

@@ -2,7 +2,8 @@ import React from "react";
 
 const IpoCard = ({ ipo }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-full md:w-80">
+    <div className="bg-white shadow-md rounded-lg p-6 w-full md:w-80 ml-10">
+
       {/* Logo and Name */}
       <div className="flex items-center  justify-center space-x-3 mb-4">
         <img src={ipo.logo} alt={ipo.name} className="w-10 h-10 rounded-full" />

@@ -1,9 +1,11 @@
 import React from 'react';
 import { BarChart, ShoppingCart, FileText, MessageCircle, Settings, Server, User, Info } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const DashBoardsideBar = ({ onLogout }) => {
+  const navigate = useNavigate();
   return (
-    <aside className="w-64 bg-gray-50 p-5 shadow-md">
+    <aside className="w-64 h-screen bg-gray-70 p-5 shadow-md">
       <img src="src/assets/logo.webp" alt="Logo" className="mb-4" />
       <h3 className="text-gray-400 uppercase text-sm font-semibold">Menu</h3>
       <ul className="mt-3 space-y-2">
@@ -13,7 +15,7 @@ const DashBoardsideBar = ({ onLogout }) => {
         </li>
         <li className="flex items-center p-2 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded-lg cursor-pointer">
           <ShoppingCart className="w-5 h-5 mr-3" />
-          <span>Manage IPO</span>
+          <span onClick={() => navigate("/ipomanage")}>Manage IPO</span>
         </li>
         <li className="flex items-center p-2 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded-lg cursor-pointer">
           <FileText className="w-5 h-5 mr-3" />

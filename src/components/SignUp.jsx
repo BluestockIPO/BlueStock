@@ -26,11 +26,11 @@ export default function SignUp() {
   const handleSignUp = (e) => {
     e.preventDefault();
     setIsLoading(true);
-  
+
     RegisterApi(inputs)
       .then((response) => {
         if (response && response.idToken) {
-          storageUserData(response.idToken); 
+          storageUserData(response.idToken);
         } else {
           console.error("Invalid response structure:", response);
           alert("Sign-up failed. Please try again.");
@@ -61,9 +61,9 @@ export default function SignUp() {
         setIsLoading(false); // Stop loading
       });
   };
- 
 
-  
+
+
 
   const handleInputs = (event) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
@@ -126,7 +126,20 @@ export default function SignUp() {
           </span>
         </div>
 
-        <ReCAPTCHA sitekey="6LcuUt0qAAAAACowY0pGCDarj4eUhPj6q8IN7G9s" onChange={() => setIsVerified(true)} />
+        <div className="flex flex-col items-center gap-4 p-4">
+          {/* Google reCAPTCHA */}
+          <ReCAPTCHA
+            sitekey="6LcuUt0qAAAAACowY0pGCDarj4eUhPj6q8IN7G9s"
+            onChange={() => setIsVerified(true)}
+          />
+
+          {/* Error message (shown only if not verified) */}
+          {!isVerified && (
+            <div className="text-red-500 font-medium animate-pulse">
+              Please Verify the Captcha
+            </div>
+          )}
+        </div>
 
         <button
           type="submit"

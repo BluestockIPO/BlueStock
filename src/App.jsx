@@ -6,12 +6,13 @@ import ForgotPassword from "./components/ForgotPassword";
 import UpcomingIpo from "./components/ipos/UpcomingIpo";
 import DashBoard from "./components/DashBoard"
 import "./styles/App.css";
+import IpoManage from "./components/IpoManage";
 
 function Layout() {
   const location = useLocation();
 
   // Hide Navbar on Login & Signup pages
-  const hideNavbar = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/dashboard";
+  const hideNavbar = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/dashboard" || location.pathname === "/ipomanage";
 
   return (
     <>
@@ -22,6 +23,7 @@ function Layout() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/ipomanage" element={<IpoManage />} />
       </Routes>
     </>
   );

@@ -6,9 +6,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isDashboard = location.pathname === "/dashboard"; // Check if the current page is Dashboard
-  const hideButton = location.pathname === "/dashboard"; // Hide Sign In/Sign Up on Dashboard
-
+  const isDashboard = location.pathname === "/dashboard";
+  const hideButton = location.pathname === "/dashboard"; 
   return (
     <nav className="bg-white shadow-md py-4 px-6 flex items-center justify-between">
       {/* Left: Logo */}
@@ -41,13 +40,13 @@ const Navbar = () => {
       {!hideButton && (
         <div className="ml-auto flex gap-4">
           <button 
-            className="text-gray-600 hover:text-blue-500 transition-colors"
+            className="text-gray-600 hover:text-blue-500 transition-colors cursor-pointer"
             onClick={() => navigate("/login")}
           >
             Sign In
           </button>
           <button
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors cursor-pointer"
             onClick={() => navigate("/signup")}
           >
             Sign Up Now
